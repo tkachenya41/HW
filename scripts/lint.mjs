@@ -11,7 +11,7 @@ const shouldSkipTypescript = process.argv.includes('--skip-ts');
 const shouldSkipJson = process.argv.includes('--skip-json');
 
 (async function lint() {
-  console.log(
+  console.debug(
     chalk.yellow.bold(
       `${icons.info} Running code quality and formatting checks...\n`
     )
@@ -19,7 +19,7 @@ const shouldSkipJson = process.argv.includes('--skip-json');
   let success = true;
 
   try {
-    console.log(
+    console.debug(
       chalk.blue(
         `${icons.bullet} Checking${
           shouldAutoFix ? ' and fixing' : ''
@@ -27,7 +27,7 @@ const shouldSkipJson = process.argv.includes('--skip-json');
       )
     );
     await validatePackageJson(shouldAutoFix);
-    console.log(
+    console.debug(
       chalk.green(
         `${icons.check} File package.json has been successfully validated!\n`
       )
@@ -44,11 +44,11 @@ const shouldSkipJson = process.argv.includes('--skip-json');
 
   try {
     if (shouldSkipEslint) {
-      console.log(
+      console.debug(
         chalk.yellow(`${icons.warning} Skipping eslint rules check\n`)
       );
     } else {
-      console.log(
+      console.debug(
         chalk.blue(
           `${icons.bullet} Checking${
             shouldAutoFix ? ' and fixing' : ''
@@ -63,11 +63,11 @@ const shouldSkipJson = process.argv.includes('--skip-json');
             warningCount > 0 || fixableWarningCount > 0
         )
       ) {
-        console.log(
+        console.debug(
           chalk.yellow(`${icons.warning} Linter success with warnings\n`)
         );
       } else {
-        console.log(chalk.green(`${icons.check} Linter success\n`));
+        console.debug(chalk.green(`${icons.check} Linter success\n`));
       }
     }
   } catch (err) {
@@ -77,16 +77,16 @@ const shouldSkipJson = process.argv.includes('--skip-json');
 
   try {
     if (shouldSkipTypescript) {
-      console.log(chalk.yellow(`${icons.warning} Skipping typescript check\n`));
+      console.debug(chalk.yellow(`${icons.warning} Skipping typescript check\n`));
     } else {
-      console.log(chalk.blue(`${icons.bullet} Checking typescript...`));
+      console.debug(chalk.blue(`${icons.bullet} Checking typescript...`));
       await runTsc();
-      console.log(chalk.green(`${icons.check} Type checking passes\n`));
+      console.debug(chalk.green(`${icons.check} Type checking passes\n`));
     }
   } catch (err) {
     success = false;
-    console.log(chalk.bold('Typescript errors'));
-    console.log(err.stdout || err.stderr);
+    console.debug(chalk.bold('Typescript errors'));
+    console.debug(err.stdout || err.stderr);
     console.error(
       chalk.red.bold(
         `  ${icons.error} Typescript failed due to the above errors\n`
@@ -96,11 +96,11 @@ const shouldSkipJson = process.argv.includes('--skip-json');
 
   try {
     if (shouldSkipJson) {
-      console.log(
+      console.debug(
         chalk.yellow(`${icons.warning} Skipping *.json files formatting\n`)
       );
     } else if (shouldAutoFix) {
-      console.log(chalk.blue(`${icons.bullet} Formatting *.json files!`));
+      console.debug(chalk.blue(`${icons.bullet} Formatting *.json files!`));
       execaSync(
         'prettier',
         [
@@ -116,14 +116,14 @@ const shouldSkipJson = process.argv.includes('--skip-json');
           preferLocal: true
         }
       );
-      console.log(
+      console.debug(
         chalk.green(`${icons.check} Formatted *.json files successfully\n`)
       );
     }
   } catch (err) {
     success = false;
-    console.log(chalk.bold('Prettier errors'));
-    console.log(err.stdout || err.stderr);
+    console.debug(chalk.bold('Prettier errors'));
+    console.debug(err.stdout || err.stderr);
     console.error(
       chalk.red.bold(
         `${icons.error} Formatting *.json files failed due to the above errors\n`
@@ -132,7 +132,7 @@ const shouldSkipJson = process.argv.includes('--skip-json');
   }
 
   if (success) {
-    console.log(chalk.bold.green(`${icons.check} All checks passed\n`));
+    console.debug(chalk.bold.green(`${icons.check} All checks passed\n`));
     process.exit(0);
   } else {
     console.error(

@@ -23,9 +23,19 @@ module.exports = {
       'error',
       { ignore: ['eslint-enable'] }
     ],
+    "unicorn/filename-case": [
+      "error",
+      {
+        "cases": {
+          "camelCase": true,
+          "pascalCase": true
+        }
+      }
+    ],
     'no-console': ['error', { allow: ['warn', 'error', 'debug'] }],
     'unicorn/no-array-callback-reference': 'off',
     'unicorn/no-null': 'off',
+    'unicorn/prefer-top-level-await': 'off',
     'unicorn/prevent-abbreviations': [
       'error',
       {
