@@ -65,9 +65,19 @@ export function logPerson(person: Person) {
 
 export function filterPersons(
   persons: Person[],
-  personType: string,
-  criteria: unknown
-): unknown[] {
+  personType: Admin['type'],
+  criteria: Partial<Admin>
+): Admin[];
+export function filterPersons(
+  persons: Person[],
+  personType: User['type'],
+  criteria: Partial<User>
+): User[];
+export function filterPersons(
+  persons: Person[],
+  personType: Person['type'],
+  criteria: Partial<Person>
+): Person[] {
   return persons
     .filter((person) => person.type === personType)
     .filter((person) => {
@@ -78,7 +88,9 @@ export function filterPersons(
     });
 }
 
-export const usersOfAge23 = filterPersons(persons, 'user', { age: 23 });
+export const usersOfAge23 = filterPersons(persons, 'user', {
+  age: 123
+});
 export const adminsOfAge23 = filterPersons(persons, 'admin', { age: 23 });
 
 console.debug('Users of age 23:');

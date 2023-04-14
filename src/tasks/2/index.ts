@@ -18,21 +18,22 @@ Exercise:
 
 */
 
-interface User {
-  name: string;
+interface Bio {
+  name: string | number;
   age: number;
+}
+
+interface User extends Bio {
   occupation: string;
 }
 
-interface Admin {
-  name: string;
-  age: number;
+interface Admin extends Bio {
   role: string;
 }
 
-export type Person = unknown;
+export type Person = Admin | User;
 
-export const persons: User[] /* <- Person[] */ = [
+export const persons: Person[] = [
   {
     name: 'Max Mustermann',
     age: 25,
@@ -55,7 +56,7 @@ export const persons: User[] /* <- Person[] */ = [
   }
 ];
 
-export function logPerson(user: User) {
+export function logPerson(user: Person) {
   console.debug(` - ${user.name}, ${user.age}`);
 }
 

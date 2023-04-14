@@ -76,8 +76,19 @@ export type ApiResponse<T> =
       error: string;
     };
 
-export function promisify(argument: unknown): unknown {
-  return null;
+export function promisify<T>(
+  argument: (callback: (data: ApiResponse<T>) => void) => void
+): () => Promise<T> {
+  return () =>
+    new Promise((resolve, reject) => {
+      argument((response) => {
+        if (response.status === 'success') {
+          resolve(response.data);
+        } else {
+          reject(response.error);
+        }
+      });
+    });
 }
 
 const oldApi = {
@@ -126,16 +137,17 @@ function logPerson(person: Person) {
 
 async function startTheApp() {
   console.debug('Admins:');
-  console.debug((await api.requestAdmins()).map(logPerson));
+  const admins = await api.requestAdmins();
+  console.debug(admins.map(logPerson));
   console.debug();
 
   console.debug('Users:');
-  console.debug((await api.requestUsers()).map(logPerson));
+  const users = await api.requestUsers();
+  console.debug(users.map(logPerson));
 
   console.debug('Server time:');
-  console.debug(
-    new Date(await api.requestCurrentServerTime()).toLocaleString()
-  );
+  const time = await api.requestCurrentServerTime();
+  console.debug(new Date(time).toLocaleString());
 
   console.debug('Coffee machine queue length:');
   console.debug(await api.requestCoffeeMachineQueueLength());

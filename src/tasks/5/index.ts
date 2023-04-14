@@ -4,7 +4,7 @@ Intro:
 
     Time to filter the data! In order to be flexible
     we filter users using a number of criteria and
-    return only those matching all of the criteria.
+    return only those matching all the criteria.
     We don't need Admins yet, we only filter Users.
 
 Exercise:
@@ -92,21 +92,22 @@ export function logPerson(person: Person) {
   console.debug(` - ${person.name}, ${person.age}, ${additionalInformation}`);
 }
 
-export function filterUsers(persons: Person[], criteria: User): User[] {
-  return persons.filter(isUser).filter((user) => {
-    const criteriaKeys = Object.keys(criteria) as (keyof User)[];
-    return criteriaKeys.every((fieldName) => {
-      return user[fieldName] === criteria[fieldName];
-    });
-  });
+type Criteria = Omit<Partial<User>, 'type'>;
+export function filterUsers(persons: Person[], criteria?: Criteria): User[] {
+  const users = persons.filter(isUser);
+  return criteria
+    ? users.filter((user) => {
+        const criteriaKeys = Object.keys(criteria) as (keyof Criteria)[];
+
+        return criteriaKeys.every((fieldName) => {
+          return user[fieldName] === criteria[fieldName];
+        });
+      })
+    : users;
 }
 
 console.debug('Users of age 23:');
-console.debug(
-  filterUsers(persons, {
-    age: 23
-  }).map(logPerson)
-);
+console.debug(filterUsers(persons, { age: 23 }).map(logPerson));
 
 // In case if you are stuck:
 // https://www.typescriptlang.org/docs/handbook/utility-types.html

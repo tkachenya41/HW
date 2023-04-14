@@ -54,8 +54,8 @@ export const persons: Person[] = [
 ];
 
 export function logPerson(person: Person) {
-  let additionalInformation: string;
-  additionalInformation = person.role ? person.role : person.occupation;
+  const additionalInformation =
+    'role' in person ? person.role : person.occupation;
   console.debug(` - ${person.name}, ${person.age}, ${additionalInformation}`);
 }
 

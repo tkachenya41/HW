@@ -17,21 +17,24 @@ Exercise:
 
 */
 
-interface User {
-  type: 'user';
+interface Bio {
   name: string;
   age: number;
+}
+
+interface User extends Bio {
+  type: 'user';
   occupation: string;
 }
 
-interface Admin {
+interface Admin extends Bio {
   type: 'admin';
-  name: string;
-  age: number;
   role: string;
 }
 
-type PowerUser = unknown;
+interface PowerUser extends Bio, Pick<Admin, 'role'>, Pick<User, 'occupation'> {
+  type: 'powerUser';
+}
 
 export type Person = User | Admin | PowerUser;
 

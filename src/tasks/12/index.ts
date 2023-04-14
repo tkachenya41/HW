@@ -162,9 +162,7 @@ console.debug(
 console.debug();
 
 console.debug('Average admin age:');
-console.debug(
-  ` - ${String(getAverageValue(admins, ({ age }: Admin) => age))} years`
-);
+console.debug(` - ${getAverageValue(admins, ({ age }) => age)} years`);
 
 export {
   getMaxElement,

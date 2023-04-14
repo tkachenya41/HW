@@ -23,18 +23,23 @@ module.exports = {
       'error',
       { ignore: ['eslint-enable'] }
     ],
-    "unicorn/filename-case": [
-      "error",
+    'unicorn/filename-case': [
+      'error',
       {
-        "cases": {
-          "camelCase": true,
-          "pascalCase": true
+        'ignore': [
+          'vite-env.d.ts'
+        ],
+        'cases': {
+          'camelCase': true,
+          'pascalCase': true
         }
       }
     ],
     'no-console': ['error', { allow: ['warn', 'error', 'debug'] }],
     'unicorn/no-array-callback-reference': 'off',
+    'unicorn/no-array-reduce': 'off',
     'unicorn/no-null': 'off',
+    '@typescript-eslint/unbound-method': 'off',
     'unicorn/prefer-top-level-await': 'off',
     'unicorn/prevent-abbreviations': [
       'error',

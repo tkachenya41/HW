@@ -1,9 +1,9 @@
 import {
-  strReverse,
-  strToLower,
-  strToUpper,
-  strRandomize,
-  strInvertCase
+  stringReverse,
+  stringToLower,
+  stringToUpper,
+  stringRandomize,
+  stringInvertCase
 } from 'str-utils';
 
 /*
@@ -71,11 +71,11 @@ const isAdmin = (person: Person): person is Admin => person.type === 'admin';
 const isUser = (person: Person): person is User => person.type === 'user';
 
 export const nameDecorators = [
-  strReverse,
-  strToLower,
-  strToUpper,
-  strRandomize,
-  strInvertCase
+  stringReverse,
+  stringToLower,
+  stringToUpper,
+  stringRandomize,
+  stringInvertCase
 ];
 
 function logPerson(person: Person) {
