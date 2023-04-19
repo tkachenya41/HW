@@ -17,12 +17,13 @@ module.exports = {
   },
   root: true,
   rules: {
-    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'error',
     'eslint-comments/no-unused-disable': 'error',
     'eslint-comments/require-description': [
       'error',
       { ignore: ['eslint-enable'] }
     ],
+    'no-console': ['error', { allow: ['warn', 'error'] }],
     'unicorn/filename-case': [
       'error',
       {
@@ -35,11 +36,9 @@ module.exports = {
         }
       }
     ],
-    'no-console': ['error', { allow: ['warn', 'error', 'debug'] }],
     'unicorn/no-array-callback-reference': 'off',
     'unicorn/no-array-reduce': 'off',
     'unicorn/no-null': 'off',
-    '@typescript-eslint/unbound-method': 'off',
     'unicorn/prefer-top-level-await': 'off',
     'unicorn/prevent-abbreviations': [
       'error',

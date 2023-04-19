@@ -104,7 +104,7 @@ export function requestCoffeeMachineQueueLength(
   });
 }
 
-function logPerson(person: Person) {
+function logPerson(this: void, person: Person) {
   return ` - ${person.name}, ${person.age}, ${
     person.type === 'admin' ? person.role : person.occupation
   }`;
@@ -112,39 +112,39 @@ function logPerson(person: Person) {
 
 function startTheApp(callback: (error: Error | null) => void) {
   requestAdmins((adminsResponse) => {
-    console.debug('Admins:');
+    console.warn('Admins:');
     if (adminsResponse.status === 'success') {
-      console.debug(adminsResponse.data.map(logPerson));
+      console.warn(adminsResponse.data.map(logPerson));
     } else {
       return callback(new Error(adminsResponse.error));
     }
 
-    console.debug();
+    console.warn();
 
     requestUsers((usersResponse) => {
-      console.debug('Users:');
+      console.warn('Users:');
       if (usersResponse.status === 'success') {
-        console.debug(usersResponse.data.map(logPerson));
+        console.warn(usersResponse.data.map(logPerson));
       } else {
         return callback(new Error(usersResponse.error));
       }
 
-      console.debug();
+      console.warn();
 
       requestCurrentServerTime((serverTimeResponse) => {
-        console.debug('Server time:');
+        console.warn('Server time:');
         if (serverTimeResponse.status === 'success') {
-          console.debug(new Date(serverTimeResponse.data).toLocaleString());
+          console.warn(new Date(serverTimeResponse.data).toLocaleString());
         } else {
           return callback(new Error(serverTimeResponse.error));
         }
 
-        console.debug();
+        console.warn();
 
         requestCoffeeMachineQueueLength((coffeeMachineQueueLengthResponse) => {
-          console.debug('Coffee machine queue length:');
+          console.warn('Coffee machine queue length:');
           if (coffeeMachineQueueLengthResponse.status === 'success') {
-            console.debug(coffeeMachineQueueLengthResponse.data);
+            console.warn(coffeeMachineQueueLengthResponse.data);
           } else {
             return callback(new Error(coffeeMachineQueueLengthResponse.error));
           }
@@ -157,13 +157,13 @@ function startTheApp(callback: (error: Error | null) => void) {
 }
 
 startTheApp((error) => {
-  console.debug();
+  console.warn();
   if (error) {
-    console.debug(
+    console.warn(
       `Error: "${error.message}", but it's fine, sometimes errors are inevitable.`
     );
   } else {
-    console.debug('Success!');
+    console.warn('Success!');
   }
 });
 

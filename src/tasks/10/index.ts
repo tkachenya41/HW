@@ -92,25 +92,32 @@ export function promisify<T>(
 }
 
 const oldApi = {
-  requestAdmins(callback: (response: ApiResponse<Admin[]>) => void) {
+  requestAdmins(
+    this: void,
+    callback: (response: ApiResponse<Admin[]>) => void
+  ) {
     callback({
       status: 'success',
       data: admins
     });
   },
-  requestUsers(callback: (response: ApiResponse<User[]>) => void) {
+  requestUsers(this: void, callback: (response: ApiResponse<User[]>) => void) {
     callback({
       status: 'success',
       data: users
     });
   },
-  requestCurrentServerTime(callback: (response: ApiResponse<number>) => void) {
+  requestCurrentServerTime(
+    this: void,
+    callback: (response: ApiResponse<number>) => void
+  ) {
     callback({
       status: 'success',
       data: Date.now()
     });
   },
   requestCoffeeMachineQueueLength(
+    this: void,
     callback: (response: ApiResponse<number>) => void
   ) {
     callback({
@@ -136,28 +143,28 @@ function logPerson(person: Person) {
 }
 
 async function startTheApp() {
-  console.debug('Admins:');
+  console.warn('Admins:');
   const admins = await api.requestAdmins();
-  console.debug(admins.map(logPerson));
-  console.debug();
+  console.warn(admins.map(logPerson));
+  console.warn();
 
-  console.debug('Users:');
+  console.warn('Users:');
   const users = await api.requestUsers();
-  console.debug(users.map(logPerson));
+  console.warn(users.map(logPerson));
 
-  console.debug('Server time:');
+  console.warn('Server time:');
   const time = await api.requestCurrentServerTime();
-  console.debug(new Date(time).toLocaleString());
+  console.warn(new Date(time).toLocaleString());
 
-  console.debug('Coffee machine queue length:');
-  console.debug(await api.requestCoffeeMachineQueueLength());
+  console.warn('Coffee machine queue length:');
+  console.warn(await api.requestCoffeeMachineQueueLength());
 }
 startTheApp().then(
   () => {
-    console.debug('Success!');
+    console.warn('Success!');
   },
   (error: Error) => {
-    console.debug(
+    console.warn(
       `Error: "${error.message}", but it's fine, sometimes errors are inevitable.`
     );
   }

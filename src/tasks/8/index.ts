@@ -83,18 +83,18 @@ export function logPerson(person: Person) {
   return `${person.name}, ${person.age}, ${additionalInformation}`;
 }
 
-console.debug('Admins:');
-console.debug(persons.filter(isAdmin).map(logPerson));
+console.warn('Admins:');
+console.warn(persons.filter(isAdmin).map(logPerson));
 
-console.debug();
+console.warn();
 
-console.debug('Users:');
-console.debug(persons.filter(isUser).map(logPerson));
+console.warn('Users:');
+console.warn(persons.filter(isUser).map(logPerson));
 
-console.debug();
+console.warn();
 
-console.debug('Power users:');
-console.debug(persons.filter(isPowerUser).map(logPerson));
+console.warn('Power users:');
+console.warn(persons.filter(isPowerUser).map(logPerson));
 
 // In case if you are stuck:
 // https://www.typescriptlang.org/docs/handbook/utility-types.html

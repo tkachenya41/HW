@@ -56,11 +56,11 @@ export const persons: Person[] = [
 export function logPerson(person: Person) {
   const additionalInformation =
     'role' in person ? person.role : person.occupation;
-  console.debug(` - ${person.name}, ${person.age}, ${additionalInformation}`);
+  console.warn(` - ${person.name}, ${person.age}, ${additionalInformation}`);
 }
 
-console.debug('Persons:');
-console.debug(persons.map(logPerson));
+console.warn('Persons:');
+console.warn(persons.map(logPerson));
 
 // In case if you are stuck:
 // https://www.typescriptlang.org/docs/handbook/2/narrowing.html#the-in-operator-narrowing

@@ -38,8 +38,8 @@ function getSubjectNamesAsArray(
   return Object.keys(subj).filter(isSubjectName);
 }
 
-console.debug(getSubjectNamesAsString(subjects));
-console.debug(getSubjectNamesAsArray(subjects));
+console.warn(getSubjectNamesAsString(subjects));
+console.warn(getSubjectNamesAsArray(subjects));
 
 function getTotalStudents(subj: Record<SubjectName, Subject>): number {
   return Object.values(subj).reduce(
@@ -59,14 +59,14 @@ function getAverage(total: number, quantity: number): number {
   return total / quantity;
 }
 
-console.debug(
+console.warn(
   getAverage(
     getTotalStudents(subjects),
     getSubjectNamesAsArray(subjects).length
   )
 );
 
-console.debug(
+console.warn(
   getAverage(
     getTotalTeachers(subjects),
     getSubjectNamesAsArray(subjects).length
@@ -91,4 +91,4 @@ function getSubjectsSorter(direction: 'ASC' | 'DESC'): SubjectsSorter {
 
 const subjectsArray = Object.entries(subjects).sort(getSubjectsSorter('ASC'));
 
-console.debug(subjectsArray);
+console.warn(subjectsArray);

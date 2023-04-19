@@ -40,14 +40,14 @@ interface Admin {
 
 function logUser(user: User) {
   const pos = users.indexOf(user) + 1;
-  console.debug(
+  console.warn(
     ` - #${pos} User: ${user.name}, ${user.age}, ${user.occupation}`
   );
 }
 
 function logAdmin(admin: Admin) {
   const pos = admins.indexOf(admin) + 1;
-  console.debug(` - #${pos} Admin: ${admin.name}, ${admin.age}, ${admin.role}`);
+  console.warn(` - #${pos} Admin: ${admin.name}, ${admin.age}, ${admin.role}`);
 }
 
 const admins: Admin[] = [
@@ -85,38 +85,38 @@ export function swap<A, B>(v1: A, v2: B): [B, A] {
 }
 
 function test1() {
-  console.debug('test1:');
+  console.warn('test1:');
   const [secondUser, firstAdmin] = swap(admins[0], users[1]);
   logUser(secondUser);
   logAdmin(firstAdmin);
 }
 
 function test2() {
-  console.debug('test2:');
+  console.warn('test2:');
   const [secondAdmin, firstUser] = swap(users[0], admins[1]);
   logAdmin(secondAdmin);
   logUser(firstUser);
 }
 
 function test3() {
-  console.debug('test3:');
+  console.warn('test3:');
   const [secondUser, firstUser] = swap(users[0], users[1]);
   logUser(secondUser);
   logUser(firstUser);
 }
 
 function test4() {
-  console.debug('test4:');
+  console.warn('test4:');
   const [firstAdmin, secondAdmin] = swap(admins[1], admins[0]);
   logAdmin(firstAdmin);
   logAdmin(secondAdmin);
 }
 
 function test5() {
-  console.debug('test5:');
+  console.warn('test5:');
   const [stringValue, numericValue] = swap(123, 'Hello World');
-  console.debug(` - String: ${stringValue}`);
-  console.debug(` - Numeric: ${numericValue}`);
+  console.warn(` - String: ${stringValue}`);
+  console.warn(` - Numeric: ${numericValue}`);
 }
 
 for (const test of [test1, test2, test3, test4, test5]) test();

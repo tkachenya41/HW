@@ -35,7 +35,7 @@ const users: User[] = [
   }
 ];
 
-function getUserNames(users: User[]): string {
+export function getUserNames(users: User[]): string {
   return users.map((element) => element.name).join(', ');
 }
 
@@ -45,10 +45,10 @@ function hasCars(user: User): user is User & { cars: string[] } {
 
 for (const user of users) {
   if (hasCars(user)) {
-    console.debug(user.cars.length);
+    console.warn(user.cars.length);
   }
 
-  console.debug(user.cars?.length);
+  console.warn(user.cars?.length);
 }
 
 function getCarsTotal(users: User[]) {
@@ -58,19 +58,19 @@ function getCarsTotal(users: User[]) {
     .reduce((accumulator, current) => accumulator + current, 0);
 }
 
-console.debug(getCarsTotal(users));
+console.warn(getCarsTotal(users));
 
 function getEducatedUsers(users: User[]) {
   return users.filter((element) => element.hasEducation);
 }
 
-console.debug(getEducatedUsers(users));
+console.warn(getEducatedUsers(users));
 
 function hasAnimals(users: User[]) {
   return users.filter((element) => element.animals);
 }
 
-console.debug(hasAnimals(users));
+console.warn(hasAnimals(users));
 
 function getCarsNames(users: User[]) {
   return users
@@ -79,4 +79,4 @@ function getCarsNames(users: User[]) {
     .join(',');
 }
 
-console.debug(getCarsNames(users));
+console.warn(getCarsNames(users));

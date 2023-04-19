@@ -89,7 +89,7 @@ export function logPerson(person: Person) {
   if (isUser(person)) {
     additionalInformation = person.occupation;
   }
-  console.debug(` - ${person.name}, ${person.age}, ${additionalInformation}`);
+  console.warn(` - ${person.name}, ${person.age}, ${additionalInformation}`);
 }
 
 type Criteria = Omit<Partial<User>, 'type'>;
@@ -106,8 +106,8 @@ export function filterUsers(persons: Person[], criteria?: Criteria): User[] {
     : users;
 }
 
-console.debug('Users of age 23:');
-console.debug(filterUsers(persons, { age: 23 }).map(logPerson));
+console.warn('Users of age 23:');
+console.warn(filterUsers(persons, { age: 23 }).map(logPerson));
 
 // In case if you are stuck:
 // https://www.typescriptlang.org/docs/handbook/utility-types.html

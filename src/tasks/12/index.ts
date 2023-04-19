@@ -84,85 +84,85 @@ const users: User[] = [
 
 function logUser(user: User | null) {
   if (!user) {
-    console.debug(' - none');
+    console.warn(' - none');
     return;
   }
   const pos = users.indexOf(user) + 1;
-  console.debug(
+  console.warn(
     ` - #${pos} User: ${user.name}, ${user.age}, ${user.occupation}`
   );
 }
 
 function logAdmin(admin: Admin | null) {
   if (!admin) {
-    console.debug(' - none');
+    console.warn(' - none');
     return;
   }
   const pos = admins.indexOf(admin) + 1;
-  console.debug(` - #${pos} Admin: ${admin.name}, ${admin.age}, ${admin.role}`);
+  console.warn(` - #${pos} Admin: ${admin.name}, ${admin.age}, ${admin.role}`);
 }
 
 const compareUsers = (a: User, b: User) => a.age - b.age;
 const compareAdmins = (a: Admin, b: Admin) => a.age - b.age;
 const colorizeIndex = (value: number) => String(value + 1);
 
-console.debug('Youngest user:');
+console.warn('Youngest user:');
 logUser(getMinElement(users, compareUsers));
-console.debug(
+console.warn(
   ` - was ${colorizeIndex(getMinIndex(users, compareUsers))}th to register`
 );
 
-console.debug();
+console.warn();
 
-console.debug('Median user:');
+console.warn('Median user:');
 logUser(getMedianElement(users, compareUsers));
-console.debug(
+console.warn(
   ` - was ${colorizeIndex(getMedianIndex(users, compareUsers))}th to register`
 );
 
-console.debug();
+console.warn();
 
-console.debug('Oldest user:');
+console.warn('Oldest user:');
 logUser(getMaxElement(users, compareUsers));
-console.debug(
+console.warn(
   ` - was ${colorizeIndex(getMaxIndex(users, compareUsers))}th to register`
 );
 
-console.debug();
+console.warn();
 
-console.debug('Average user age:');
-console.debug(
+console.warn('Average user age:');
+console.warn(
   ` - ${String(getAverageValue(users, ({ age }: User) => age))} years`
 );
 
-console.debug();
+console.warn();
 
-console.debug('Youngest admin:');
+console.warn('Youngest admin:');
 logAdmin(getMinElement(admins, compareAdmins));
-console.debug(
+console.warn(
   ` - was ${colorizeIndex(getMinIndex(users, compareUsers))}th to register`
 );
 
-console.debug();
+console.warn();
 
-console.debug('Median admin:');
+console.warn('Median admin:');
 logAdmin(getMedianElement(admins, compareAdmins));
-console.debug(
+console.warn(
   ` - was ${colorizeIndex(getMedianIndex(users, compareUsers))}th to register`
 );
 
-console.debug();
+console.warn();
 
-console.debug('Oldest admin:');
+console.warn('Oldest admin:');
 logAdmin(getMaxElement(admins, compareAdmins));
-console.debug(
+console.warn(
   ` - was ${colorizeIndex(getMaxIndex(users, compareUsers))}th to register`
 );
 
-console.debug();
+console.warn();
 
-console.debug('Average admin age:');
-console.debug(` - ${getAverageValue(admins, ({ age }) => age)} years`);
+console.warn('Average admin age:');
+console.warn(` - ${getAverageValue(admins, ({ age }) => age)} years`);
 
 export {
   getMaxElement,

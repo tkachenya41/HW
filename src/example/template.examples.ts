@@ -20,8 +20,8 @@ const string_ = 'abc';
 const upperCasedStrs = upperCase(strs);
 const upperCasedString = upperCase(string_);
 
-console.debug(upperCasedStrs);
-console.debug(upperCasedString);
+console.warn(upperCasedStrs);
+console.warn(upperCasedString);
 
 const user = {
   email: 'test.email@mail.com',
@@ -41,9 +41,9 @@ const userKeys = getKeys(user);
 const postKeys = getKeys(post);
 
 for (const key of userKeys) {
-  console.debug(user[key]);
+  console.warn(user[key]);
 }
 
 for (const key of postKeys) {
-  console.debug(post[key]);
+  console.warn(post[key]);
 }

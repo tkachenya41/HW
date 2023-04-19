@@ -25,7 +25,7 @@ function getUsers(): ApiResponse<User> {
   };
 }
 
-console.debug(getUsers().data.map((user) => user.email));
+console.warn(getUsers().data.map((user) => user.email));
 
 function getPosts(): ApiResponse<Post> {
   return {
@@ -52,10 +52,10 @@ function getPosts(): ApiResponse<Post> {
   };
 }
 
-console.debug(getPosts().data.map((post) => post.author.email));
+console.warn(getPosts().data.map((post) => post.author.email));
 
 function createUser(user: CreateUserParameters) {
-  console.debug(user);
+  console.warn(user);
 }
 
 createUser({

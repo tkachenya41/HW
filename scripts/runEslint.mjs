@@ -21,7 +21,7 @@ export async function runEslint(shouldAutoFix) {
     )
   ) {
     const formatter = await eslint.loadFormatter('stylish');
-    console.debug(formatter.format(results));
+    console.warn(formatter.format(results));
     throw new Error('Eslint failed');
   }
 
@@ -32,7 +32,7 @@ export async function runEslint(shouldAutoFix) {
     )
   ) {
     const formatter = await eslint.loadFormatter('stylish');
-    console.debug(formatter.format(results));
+    console.warn(formatter.format(results));
   }
 
   return results;

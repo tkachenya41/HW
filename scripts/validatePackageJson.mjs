@@ -44,8 +44,8 @@ export async function validatePackageJson(shouldAutoFix) {
   );
 
   if (invalidDevDependencies.length || invalidDependencies.length) {
-    console.debug('Dependencies in package.json must be absolute.');
-    console.debug(
+    console.warn('Dependencies in package.json must be absolute.');
+    console.warn(
       `The following dependencies are invalid:\n - ${[
         ...invalidDependencies,
         ...invalidDevDependencies
@@ -57,7 +57,7 @@ export async function validatePackageJson(shouldAutoFix) {
   const isValidFormatting = checkPackageFormat(packageJSON);
 
   if (!isValidFormatting && shouldAutoFix) {
-    console.debug(chalk.blue('Formatting package.json file...'));
+    console.warn(chalk.blue('Formatting package.json file...'));
     const appPackage = prettyFormatPackage(packageJSON);
     fs.writeFileSync(packagePath, appPackage, { encoding: 'utf8' });
     execaSync('prettier', ['-u', '-w', '--loglevel=warn', packagePath], {
@@ -65,7 +65,7 @@ export async function validatePackageJson(shouldAutoFix) {
       preferLocal: true
     });
   } else if (!isValidFormatting) {
-    console.debug('Package format is invalid, run with --fix to correct');
+    console.warn('Package format is invalid, run with --fix to correct');
     throw new Error('Package formatting is invalid!');
   }
 }

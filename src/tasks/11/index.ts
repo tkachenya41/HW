@@ -92,7 +92,7 @@ function logPerson(person: Person) {
   return `- ${name}, ${person.age}, ${additionalInformation}`;
 }
 
-console.debug([...([] as Person[]), ...users, ...admins].map(logPerson));
+console.warn([...([] as Person[]), ...users, ...admins].map(logPerson));
 
 // In case if you are stuck:
 // https://www.typescriptlang.org/docs/handbook/modules.html#ambient-modules
