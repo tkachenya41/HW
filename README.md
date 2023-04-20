@@ -64,3 +64,16 @@
 ### Husky:
 
 - [Официальная документация](https://typicode.github.io/husky/#/)
+
+## Функциональное программирование
+
+- Декларативный и императивный подход: [Основные принципы программирования: императивное и декларативное программирование](https://tproger.ru/translations/imperative-declarative-programming-concepts/)
+- Функциональное программирование: [Frontend Stuff | Frontend Stuff](https://frontend-stuff.com/blog/tags/functional-programming/)
+  - Reduce: https://codepen.io/staevs/pen/xxYzyRM
+  - Curry: [Carry](https://codepen.io/staevs/pen/GRQGGpJ?editors=0010)[Curry](https://codepen.io/staevs/pen/KKQeegX)
+  - Pure and “dirty” functions: [TypeScript: TS Playground - An online editor for exploring TypeScript and JavaScript](https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgKoGdrIN4ChkEzBTpgBycAthAFzKlSgDmA3PgQDZykXV0PM2BZDACuHDiCoQA-PzCMQrXAF9cuUJFiIUAYS7p0UAPbHKOdsil96CwZYRwARqAhg6IUZSfQhBUqIAJhDg6HQY0ADaALpsarhiIAhgwMYg9G4RUABi4pLSABSimFDhJQCUZVh4wsXQAHRiEtYoALzIAAYAJNh1UI3EPNIqyD199Qbkwx1+yFBuolDpfXHqicmp6UyZJQDqwGAAFrnNhX1VUJVoJRbC82CL6TXCBPVvfQA0lsJN+TbdvRKAxIU2oIzGQMmvAgKg6lhUqwSoiSKTSyDggUCAGUHsFwAAVYz6bjoAoIAxGUyUOjEwwmMwfWxBELua7Qcq3AgINKkZCiAAOgTgkECtMpZmQ7WeLze9XJJPplC+L38uJZYWQkVl8rpVPqATxYHQjINLOi8PUtUFwogoopiv1atC9X5xUOBVN4HKbEs90efOtIrFitWQA)
+  - Compose: [TypeScript: TS Playground - An online editor for exploring TypeScript and JavaScript](https://www.typescriptlang.org/play?ssl=22&ssc=18&pln=22&pc=39#code/MYewdgzgLgBKC2AHEECmMC8MAU2B0BAZpAJSYB8MAhgE4DmFMxEeNqAJgK7CoBKAlnQAWUXFWDAANHE40aZDJWCya2ccBLTadEgG4AUPtCRYdVFAByVeOizZoNAFwwH-MDuev3AbQC6jAG99GDhwaBhvQn4aaCsbaQAbKljrVH8sBzwIRAT+UQByGHy9YJg2KFkwCKiYy1TE5LqbXwMAX0NjcLMoADFo6AAZcyhUGMwcWicXKBo3Oj8FSiCQ8srqOTx4KkR7GcZMiE4AIy86bAAGaQBGEhL2ozDTcwBVRERRgGFkjnG1OU8ZnMFoxJpttrsaPsZngoCBXu8aF80NhbgYHiYYN14Z9vuwAJJgPL8KgJCDjBDIZGlLFvHFodiSanmPq1IZQEYxRkhbpxVD6Er6GkIpEcbDdFmDYajCBi8y87D5ABWICEVTAICSYGKqI6jxgbiJJLJWCFdI4BMNpIVytVMHVmuKaM6GtQeASIDOBqgxNJJH0QA)
+- Big O:
+  - [[Big O / Хабр](https://habr.com/ru/post/444594/)
+  - [Шпаргалка по Big-O Notation: быстрые ответы на вопросы Big-O](https://bestprogrammer.ru/izuchenie/shpargalka-po-big-o-notation-bystrye-otvety-na-voprosy-big-o)
+  - Binary search: [Binary search](https://codepen.io/staevs/pen/WNMyyOE?editors=0010)
